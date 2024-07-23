@@ -1,31 +1,33 @@
-#ifndef UART_H
-#define UART_H
+#ifndef	_UART_H
+#define	_UART_H
 
-#include "device.h"
-#include "k_stdint.h"
-#include "macros.h"
+#define UART        0x10000000
 
-struct uart_regs_t {
-    uint32_t DR;               // 0x000 Data Register
-    uint32_t RSR;              // 0x004 Receive Status Register
-    uint32_t reserve[4];       // 0x008 ~ 0x014
-    uint32_t FR;               // 0x018 Flag Register
-    uint32_t reserve1;         // 0x01C
-    uint32_t ILPR;             // 0x020 IrDA Low-power Counter Register
-    uint32_t IBRD;             // 0x024 Integer Baud Rate Register
-    uint32_t FBRD;             // 0x028 Fractional Baud Rate Register
-    uint32_t LCR_H;            // 0x02C Line Control Register  
-    uint32_t CR;               // 0x030 Control Register   
-    uint32_t IFLS;             // 0x034 Interrupt FIFO Level Select Register
-    uint32_t IMSC;             // 0x038 Interrupt Mask Set/Clear Register   
-    uint32_t RIS;              // 0x03C Raw Interrupt Status Register
-    uint32_t MIS;              // 0x040 Masked Interrupt Status Register 
-    uint32_t ICR;              // 0x044 Interrupt Clear Register
-    uint32_t DMACR;            // 0x048 DMA Control Register
-};
+/* THR:transmitter holding register */
+#define UART_DAT    (UART+0x00) /* 数据寄存器*/
+#define UART_IER    (UART+0x01) /* 中断使能寄存器*/
+#define UART_IIR    (UART+0x02) /* 中断标识寄存器 (read only)*/
+#define UART_FCR    (UART+0x02) /* FIFO控制寄存器 (write only)*/
+#define UART_LCR    (UART+0x03) /* 线路控制寄存器*/
+#define UART_MCR    (UART+0x04) /* MODEN控制寄存器*/
+#define UART_LSR    (UART+0x05) /* 线路状态寄存器*/
+#define UART_MSR    (UART+0x06) /* MODEN状态寄存器*/
 
+#define UART_DLL (UART+0x00)  /*预分频寄存器低8位*/
+#define UART_DLM (UART+0x01)  /*预分频寄存器高8位*/
 
-void uart_init(void);
-int uart_receive_data(void);
-int uart_send_data(char c);
-#endif
+#define UART_LSR_ERROR   0x80  /* 出错 */
+#define UART_LSR_EMPTY    0x40  /* 传输FIFO和移位寄存器为空 */
+#define UART_LSR_TFE	    0x20  /* 传输FIFO为空 */
+#define UART_LSR_BI	    0x10  /* 传输被打断 */
+#define UART_LSR_FE	    0x08  /* 接收到没有停止位的帧 */
+#define UART_LSR_PE	    0x04  /* 奇偶校验错误位 */
+#define UART_LSR_OE	    0x02  /* 数据溢出 */
+#define UART_LSR_DR	    0x01  /* FIFO有数据 */
+
+void uart_init ( void );
+char uart_recv ( void );
+void uart_send ( char c );
+void uart_send_string(char* str);
+
+#endif  /*_UART_H */

@@ -2,12 +2,8 @@
 #define _PRINTD_H_
 #include "autoconf.h"
 
-#ifdef CONFIG_KERNEL
 #include "k_stdarg.h"
-#else
-#include "stdarg.h"
-#include <time.h>
-#endif
+
 
 /************************* color **************************/
 #define COLOR_RESET   "\033[0m"

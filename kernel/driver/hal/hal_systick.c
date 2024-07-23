@@ -1,5 +1,4 @@
 #include <config.h>
-#include <systick.h>
 
 void hal_systick_init(unsigned long clk)
 {
