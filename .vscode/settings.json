@@ -1,0 +1,9 @@
+{
+    "files.associations": {
+        "*.inc": "plaintext",
+        "stdarg.h": "c",
+        "printf.h": "c",
+        "hal_uart.h": "c",
+        "uart.h": "c"
+    }
+}
