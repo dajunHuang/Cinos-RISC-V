@@ -17,10 +17,10 @@ void hal_systick_disable_init(void)
 
 int hal_systick_stop(void)
 {
-
+    return 0;
 }
 
 unsigned int hal_systick_set_next(unsigned int us)
 {
-
+    return 0;
 }
