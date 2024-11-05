@@ -4,6 +4,10 @@
         "stdarg.h": "c",
         "printf.h": "c",
         "hal_uart.h": "c",
-        "uart.h": "c"
+        "uart.h": "c",
+        "riscv_encoding.h": "c",
+        "sbi_const.h": "c",
+        "types.h": "c",
+        "int-ll64.h": "c"
     }
 }
