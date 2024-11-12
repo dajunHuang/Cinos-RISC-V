@@ -1,7 +1,10 @@
-#include <hal_uart.h>
+#include "hal_uart.h"
+#include "config.h"
 
-void kernel_main(void)
+void start(void)
 {
+
+
 	while (1) {
 		char c = hal_uart_getchar();
 		hal_uart_putchar('-');

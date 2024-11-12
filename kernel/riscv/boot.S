@@ -11,7 +11,7 @@ _start:
 	add sp, sp, t0
 
 	/* goto C */
-	tail kernel_main
+	tail start
 
 .section .data
 .align  12

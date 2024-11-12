@@ -24,9 +24,7 @@ all: kernel
 %_s.o: %.S
 	$(CC) $(COPS) $(AOPS) $(INCLUDES) -c $< -o $@
 
-kernel: kernel.bin
-
-kernel.bin:	$(OBJ_FILES) kernel.ld
+kernel:	$(OBJ_FILES) kernel.ld
 	$(LD) -T kernel.ld -o kernel.elf $(OBJ_FILES)
 	$(OBJDUMP) -D kernel.elf > kernel.asm
 	$(OBJCOPY) -O binary kernel.elf kernel.bin

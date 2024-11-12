@@ -26,7 +26,7 @@ QEMU=qemu-system-riscv64
 qemu: 
 	$(QEMU) -nographic -M virt -cpu rv64 -m 4G -smp 4 -bios $(OPENSBI_BIN) -kernel $(KERNEL_BIN) # device loader,file="$(KERNEL_BIN)",addr=0x80200000
 
-qemu-gdb: 
+gdb: 
 	$(QEMU) -s -S -nographic -M virt -cpu rv64 -m 4G -smp 4 -bios $(OPENSBI_BIN) -kernel $(KERNEL_BIN)
 
 clean:
