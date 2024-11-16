@@ -12,11 +12,6 @@
  */
 
 #include <asm/encoding.h>
-
-#define ld		ld
-#define sd		sd
-#define 8	8
-
 	.text
 
 	/* trap entry */

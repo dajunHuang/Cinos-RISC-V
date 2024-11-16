@@ -29,11 +29,5 @@ qemu:
 gdb: 
 	$(QEMU) -s -S -nographic -M virt -cpu rv64 -m 4G -smp 4 -bios $(OPENSBI_BIN) -kernel $(KERNEL_BIN)
 
-qemu-u-boot: 
-	$(QEMU) -nographic -M virt -cpu rv64 -m 4G -smp 4 -bios $(OPENSBI_BIN) -kernel $(UBOOT_BIN)
-
-gdb-u-boot: 
-	$(QEMU) -s -S -nographic -M virt -cpu rv64 -m 4G -smp 4 -kernel $(UBOOT_BIN)
-
 clean:
 	make -C kernel clean

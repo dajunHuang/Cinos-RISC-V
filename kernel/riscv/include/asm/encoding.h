@@ -8,15 +8,6 @@
 #define RISCV_CSR_ENCODING_H
 
 #include <asm/csr.h>
-#ifndef __ASSEMBLY__
-#include <linux/bitops.h>
-#endif
-
-// #if CONFIG_IS_ENABLED(RISCV_SMODE)
-// #define MODE_PREFIX(__suffix)	s##__suffix
-// #else
-// #define MODE_PREFIX(__suffix)	m##__suffix
-// #endif
 
 #define MSTATUS_UIE	0x00000001
 #define MSTATUS_SIE	0x00000002
@@ -53,12 +44,12 @@
 #define SSTATUS32_SD	0x80000000
 #define SSTATUS64_SD	0x8000000000000000
 
-#define MIP_SSIP	BIT(IRQ_S_SOFT)
-#define MIP_MSIP	BIT(IRQ_M_SOFT)
-#define MIP_STIP	BIT(IRQ_S_TIMER)
-#define MIP_MTIP	BIT(IRQ_M_TIMER)
-#define MIP_SEIP	BIT(IRQ_S_EXT)
-#define MIP_MEIP	BIT(IRQ_M_EXT)
+#define MIP_SSIP	(1UL << (IRQ_S_SOFT))
+#define MIP_MSIP	(1UL << (IRQ_M_SOFT))
+#define MIP_STIP	(1UL << (IRQ_S_TIMER))
+#define MIP_MTIP	(1UL << (IRQ_M_TIMER))
+#define MIP_SEIP	(1UL << (IRQ_S_EXT))
+#define MIP_MEIP	(1UL << (IRQ_M_EXT))
 
 #define SIP_SSIP	MIP_SSIP
 #define SIP_STIP	MIP_STIP
@@ -138,25 +129,14 @@
 	(FETCH) ? ((SUPERVISOR) ? PTE_SX(PTE) : PTE_UX(PTE)) : \
 	((SUPERVISOR) ? PTE_SR(PTE) : PTE_UR(PTE)))
 
-#ifdef __riscv
-
-#ifdef CONFIG_64BIT
 # define MSTATUS_SD MSTATUS64_SD
 # define SSTATUS_SD SSTATUS64_SD
 # define MCAUSE_INT MCAUSE64_INT
 # define MCAUSE_CAUSE MCAUSE64_CAUSE
 # define RISCV_PGLEVEL_BITS 9
-#else
-# define MSTATUS_SD MSTATUS32_SD
-# define SSTATUS_SD SSTATUS32_SD
-# define RISCV_PGLEVEL_BITS 10
-# define MCAUSE_INT MCAUSE32_INT
-# define MCAUSE_CAUSE MCAUSE32_CAUSE
-#endif
 
 #define RISCV_PGSHIFT 12
-#define RISCV_PGSIZE BIT(RISCV_PGSHIFT)
+#define RISCV_PGSIZE (1UL << (RISCV_PGSHIFT))
 
-#endif /* __riscv */
 
 #endif /* RISCV_CSR_ENCODING_H */

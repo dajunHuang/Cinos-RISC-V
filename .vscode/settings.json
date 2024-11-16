@@ -1,6 +1,7 @@
 {
     "files.associations": {
         "*.inc": "plaintext",
+        "*.scpp": "cuda-cpp",
         "stdarg.h": "c",
         "printf.h": "c",
         "hal_uart.h": "c",
@@ -8,6 +9,8 @@
         "riscv_encoding.h": "c",
         "sbi_const.h": "c",
         "types.h": "c",
-        "int-ll64.h": "c"
+        "int-ll64.h": "c",
+        "ptrace.h": "c",
+        "global_data.h": "c"
     }
 }

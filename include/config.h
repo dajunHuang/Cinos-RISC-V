@@ -1,2 +1,5 @@
-#define CONFIG_SBI_V01
-#define NCPU 4
+#define CONFIG_SBI_V02
+#define CONFIG_NR_CPUS 4
+
+#define CONFIG_STACK_SIZE 4096
+#define CONFIG_STACK_SIZE_SHIFT 10

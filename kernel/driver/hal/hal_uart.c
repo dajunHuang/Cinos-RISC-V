@@ -7,11 +7,11 @@ void hal_uart_init(void)
 
 int hal_uart_getchar(void)
 {
-    return sbi_console_getchar();
+    return 0;
 }
 
 int hal_uart_putchar(char c)
 {
-    sbi_console_putchar(c);
+    sbi_dbcn_write_byte(c);
     return 0;
 }

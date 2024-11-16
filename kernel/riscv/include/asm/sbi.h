@@ -9,8 +9,8 @@
 #ifndef _ASM_RISCV_SBI_H
 #define _ASM_RISCV_SBI_H
 
-#include "types.h"
-#include "config.h"
+#include <types.h>
+#include <config.h>
 
 enum sbi_ext_id {
 	SBI_EXT_0_1_SET_TIMER = 0x0,
